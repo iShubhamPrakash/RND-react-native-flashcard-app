@@ -108,4 +108,4 @@ const deck={
 
 }
 
-export default cards
+export default deck
