@@ -3,10 +3,10 @@ import deck from '../utils/_DB'
 export const INITIAL_DATA='INITIAL_DATA'
 
 export const ADD_DECK='ADD_DECK'
-export const REMOVE_DECK='INITIAL_DECK'
+export const REMOVE_DECK='REMOVE_DECK'
 
-export const ADD_CARD='INITIAL_DATA'
-export const REMOVE_CARD='INITIAL_DATA'
+export const ADD_CARD='ADD_CARD'
+export const REMOVE_CARD='REMOVE_CARD'
 
 export const RESET_DATA='RESET_DATA'
 
@@ -24,10 +24,11 @@ export const addDeck=(newTitle)=>{
  }
 }
 
-export const removeDeck=(id)=>{
+export const removeDeck=(id,index)=>{
   return{
     type:REMOVE_DECK,
-    id:id
+    id,
+    index
   }
 }
 
@@ -41,6 +42,7 @@ export const addCardsToDeck=(id,card)=>{
 
 export const resetData=()=>{
   return{
-    type: RESET_DATA
+    type: RESET_DATA,
+    deck
   }
 }
