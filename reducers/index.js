@@ -7,8 +7,7 @@ import {
   RESET_DATA
 } from '../actions'
 
-
-export const appReducer=(state={},action)=>{
+const appReducer=(state={},action)=>{
   switch (action.type) {
     case INITIAL_DATA :
       return {
@@ -56,3 +55,5 @@ export const appReducer=(state={},action)=>{
 
   }
 }
+
+export default appReducer
