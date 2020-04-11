@@ -25,7 +25,13 @@ const appReducer=(state={},action)=>{
       }
 
     case REMOVE_DECK:
-      return {...Object.keys(state).filter(cardName=> cardName !== action.id)}
+      if (action.id in state){
+        const {[action.id]:val,...newState} = state  // I liked this ES6 syntax
+        // let newState={...state}
+        // delete newState[action.id]  // Other way of deleting the key
+        return newState
+      }
+      return state
 
     case ADD_CARD:
       const {id,card} = action
@@ -33,16 +39,15 @@ const appReducer=(state={},action)=>{
         ...state,
         [id]: {
           ...state[id],
-          cards: [...state[id].cards,...card]
+          cards: [...state[id].cards,{...card}]
         }
 
       }
 
     case REMOVE_CARD:
       const deck={...state}
-      const {id,index}=action
 
-      deck[id].cards.splice(index,1)
+      deck[action.id].cards.splice(action.index,1)
 
       return {...deck}
 

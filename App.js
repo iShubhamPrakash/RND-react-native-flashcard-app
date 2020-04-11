@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component }from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import CS from './coreStyles'
 import { Button, ThemeProvider } from 'react-native-elements'
@@ -9,19 +9,21 @@ import {Provider} from 'react-redux'
 
 import store from './store'
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <ThemeProvider>
-        <View style={CS.container}>
-          <Text>Hello world</Text>
-          <Button title="Hey!"/>
-          <Home/>
-          <Setting/>
-        </View>
-      </ThemeProvider>
-    </Provider>
-  )
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <ThemeProvider>
+          <View style={CS.container}>
+            <Text>Hello world</Text>
+            <Button title="Hey!"/>
+            <Home/>
+            <Setting/>
+          </View>
+        </ThemeProvider>
+      </Provider>
+    )
+  }
 }
 
 export default App
