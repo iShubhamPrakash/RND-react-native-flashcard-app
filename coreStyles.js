@@ -1,6 +1,4 @@
-import {StyleSheet} from 'react-native'
-
-const coreStyles=StyleSheet.create({
+const coreStyles={
 
   container:{
     flex: 1,
@@ -9,11 +7,6 @@ const coreStyles=StyleSheet.create({
     // alignItems:'center',
     backgroundColor:'pink'
   },
-
-
-
-
-
 
   card:{
     shadowColor: "#000",
@@ -24,7 +17,13 @@ const coreStyles=StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+
+  buttonGradient:{
+    colors: ['red', 'blue'],
+    start: { x: 0, y: 0.5 },
+    end: { x: 1, y: 0.5 },
   }
-})
+}
 
 export default coreStyles
