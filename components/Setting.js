@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 import { Button,Text,Card } from 'react-native-elements'
+import CS from '../coreStyles'
 
 class Setting extends Component {
   render() {
@@ -21,11 +22,7 @@ class Setting extends Component {
                   color="white"
                 />
               }
-              linearGradientProps={{
-                colors: ['red', 'blue'],
-                start: { x: 0, y: 0.5 },
-                end: { x: 1, y: 0.5 },
-              }}
+              linearGradientProps={CS.buttonGradient}
             />
             </View>
         </Card>

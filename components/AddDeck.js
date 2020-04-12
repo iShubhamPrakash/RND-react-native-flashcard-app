@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Button,Text,Card, Input } from 'react-native-elements'
+import CS from '../coreStyles'
 
 class AddDeck extends Component {
 
@@ -29,11 +30,7 @@ class AddDeck extends Component {
                   color="white"
                 />
               }
-              linearGradientProps={{
-                colors: ['red', 'blue'],
-                start: { x: 0, y: 0.5 },
-                end: { x: 1, y: 0.5 },
-              }}
+              linearGradientProps={CS.buttonGradient}
               buttonStyle={{marginTop: 16}}
             />
             </View>

@@ -20,7 +20,7 @@ const coreStyles={
   },
 
   buttonGradient:{
-    colors: ['red', 'blue'],
+    colors: ['#FF9800', '#F44336'],
     start: { x: 0, y: 0.5 },
     end: { x: 1, y: 0.5 },
   }
