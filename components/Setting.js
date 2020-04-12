@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet,Linking,Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
-import { Button,Text,Card } from 'react-native-elements'
+import { Button,Text,Card,SocialIcon,Avatar } from 'react-native-elements'
 import CS from '../coreStyles'
 
 class Setting extends Component {
+
+  handleSubmit=(e)=>{
+    Alert.alert(
+      'Are you sure?',
+      'This will remove all of your decks and reset the app!',
+      [
+        {text: 'NO', onPress: () => console.log("Cancel reset"), style: 'cancel'},
+        {text: 'YES', onPress: () => this.props.resetData()},
+      ]
+    )
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -14,7 +25,7 @@ class Setting extends Component {
             <Button
               title=" RESET"
               raised={true}
-              onPress={e=>alert("reset!!")}
+              onPress={this.handleSubmit}
               icon={
                 <Icon
                   name="back-in-time"
@@ -26,6 +37,40 @@ class Setting extends Component {
             />
             </View>
         </Card>
+        <Card title="Contact Developer">
+        <View style={{justifyContent:'center', alignItems:'center'}}>
+          <Avatar
+            rounded
+            size="xlarge"
+            title="SP"
+            source={{
+              uri:
+                'https://www.gravatar.com/avatar/41c5c018961438b2b5f1eff46ee03e17?s=200',
+            }}
+            onPress={ ()=> Linking.openURL('https://shubhamprakash.dev') }
+          />
+          <Text h4>Shubham Prakash</Text>
+          <View style={{flexDirection:'row'}}>
+            <SocialIcon
+              light
+              type='linkedin'
+              onPress={ ()=> Linking.openURL('https://www.linkedin.com/in/ishubhamprakash/') }
+            />
+
+            <SocialIcon
+              light
+              type='github'
+              onPress={ ()=> Linking.openURL('https://github.com/i-shubhamprakash/') }
+            />
+
+            <SocialIcon
+              light
+              type='twitter'
+              onPress={ ()=> Linking.openURL('https://twitter.com/isuvm') }
+            />
+          </View>
+        </View>
+        </Card>
       </View>
     )
   }
@@ -36,7 +81,7 @@ const styles= StyleSheet.create({
  container:{
   padding: 16,
   textAlign: 'center',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
  }
 })
 
