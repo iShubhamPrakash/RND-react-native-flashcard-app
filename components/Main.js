@@ -13,6 +13,7 @@ import {
 
 import Setting from './Setting'
 import AddDeck from './AddDeck'
+import AddQuestion from './AddQuestion'
 class Main extends Component {
 
   componentDidMount(){
@@ -30,6 +31,7 @@ class Main extends Component {
         <Text h1 style={{textAlign:"center"}}>Main Page</Text>
         <Setting/>
         <AddDeck/>
+        <AddQuestion/>
       </View>
     )
   }
