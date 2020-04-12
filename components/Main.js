@@ -10,6 +10,8 @@ import {
   removeDeck,
   resetData,
 } from '../actions'
+
+import Setting from './Setting'
 class Main extends Component {
 
   componentDidMount(){
@@ -25,6 +27,7 @@ class Main extends Component {
       <View>
         <Text h1 style={{textAlign:"center"}}>Flashcards</Text>
         <Text h1 style={{textAlign:"center"}}>Main Page</Text>
+        <Setting/>
       </View>
     )
   }
