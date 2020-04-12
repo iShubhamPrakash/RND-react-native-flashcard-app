@@ -15,6 +15,7 @@ import Setting from './Setting'
 import AddDeck from './AddDeck'
 import AddQuestion from './AddQuestion'
 import QuizStartView from './QuizStartView'
+import Question from './Question'
 class Main extends Component {
 
   componentDidMount(){
@@ -30,10 +31,11 @@ class Main extends Component {
       <View>
         <Text h1 style={{textAlign:"center"}}>Flashcards</Text>
         <Text h1 style={{textAlign:"center"}}>Main Page</Text>
-        {/* <Setting/>
-        <AddDeck/> */}
+        {/* <Setting/> */}
+        {/*<AddDeck/> */}
+        {/* <AddQuestion/> */}
         <QuizStartView/>
-        <AddQuestion/>
+        <Question/>
       </View>
     )
   }
