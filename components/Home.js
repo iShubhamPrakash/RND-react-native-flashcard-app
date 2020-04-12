@@ -36,7 +36,7 @@ class Home extends Component {
   render() {
     return (
       <View>
-        <Text h1 style={{textAlign:"center"}}>Flashcards</Text>
+        <Text h1 style={{textAlign:"center"}}>Home</Text>
       </View>
     )
   }

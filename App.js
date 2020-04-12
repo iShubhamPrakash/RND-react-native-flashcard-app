@@ -2,6 +2,7 @@ import React, { Component }from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import CS from './coreStyles'
 import { Button, ThemeProvider } from 'react-native-elements'
+import Main from './components/Main'
 import Home from './components/Home'
 import Setting from './components/Setting'
 
@@ -14,12 +15,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <ThemeProvider>
-          <View style={CS.container}>
-            <Text>Hello world</Text>
-            <Button title="Hey!"/>
-            <Home/>
-            <Setting/>
-          </View>
+            <Main/>
         </ThemeProvider>
       </Provider>
     )
