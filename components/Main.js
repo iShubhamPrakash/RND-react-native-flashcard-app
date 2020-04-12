@@ -17,6 +17,7 @@ import AddQuestion from './AddQuestion'
 import QuizStartView from './QuizStartView'
 import Question from './Question'
 import Result from './Result'
+import CardList from './CardList'
 class Main extends Component {
 
   componentDidMount(){
@@ -31,13 +32,13 @@ class Main extends Component {
     return (
       <View>
         <Text h1 style={{textAlign:"center"}}>Flashcards</Text>
-        <Text h1 style={{textAlign:"center"}}>Main Page</Text>
         {/* <Setting/> */}
-        {/*<AddDeck/> */}
+        {/* <AddDeck/> */}
         {/* <AddQuestion/> */}
         {/* <QuizStartView/> */}
         {/* <Question/> */}
-        <Result/>
+        {/* <Result/> */}
+        <CardList/>
       </View>
     )
   }
