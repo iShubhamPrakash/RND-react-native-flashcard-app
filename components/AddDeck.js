@@ -1,22 +1,30 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
-import Icon from 'react-native-vector-icons/Entypo'
-import { Button,Text,Card } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/Ionicons'
+import { Button,Text,Card, Input } from 'react-native-elements'
 
-class Setting extends Component {
+class AddDeck extends Component {
+
+  state={
+    inputText: ""
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Card title="RESET DATA">
+        <Card title="ADD A NEW DECK">
             <View>
-            <Text style={{color:'gray', padding: 12, textAlign:'center'}}> Remove all user data ?</Text>
+            <Input
+              inputStyle={{color:'gray', padding: 4, textAlign:'center' }}
+              placeholder="Enter Deck Name"
+              ref='Nameinput'
+              onChangeText={text=>this.setState({inputText:text})}
+            />
             <Button
-              title=" RESET"
-              raised={true}
-              onPress={e=>alert("reset!!")}
+              title=" CREATE"
+              onPress={e=>console.log("clicked",this.state.inputText)}
               icon={
                 <Icon
-                  name="back-in-time"
+                  name="ios-add-circle-outline"
                   size={15}
                   color="white"
                 />
@@ -26,6 +34,7 @@ class Setting extends Component {
                 start: { x: 0, y: 0.5 },
                 end: { x: 1, y: 0.5 },
               }}
+              buttonStyle={{marginTop: 16}}
             />
             </View>
         </Card>
@@ -43,4 +52,4 @@ const styles= StyleSheet.create({
  }
 })
 
-export default  Setting
+export default  AddDeck
