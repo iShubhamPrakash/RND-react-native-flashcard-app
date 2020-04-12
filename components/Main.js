@@ -16,6 +16,7 @@ import AddDeck from './AddDeck'
 import AddQuestion from './AddQuestion'
 import QuizStartView from './QuizStartView'
 import Question from './Question'
+import Result from './Result'
 class Main extends Component {
 
   componentDidMount(){
@@ -34,8 +35,9 @@ class Main extends Component {
         {/* <Setting/> */}
         {/*<AddDeck/> */}
         {/* <AddQuestion/> */}
-        <QuizStartView/>
-        <Question/>
+        {/* <QuizStartView/> */}
+        {/* <Question/> */}
+        <Result/>
       </View>
     )
   }
