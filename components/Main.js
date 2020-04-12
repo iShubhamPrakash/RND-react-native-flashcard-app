@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import { View } from 'react-native'
+import { View,StyleSheet,SafeAreaView } from 'react-native'
 import { Text } from 'react-native-elements'
 import {connect} from 'react-redux'
+import Constants from 'expo-constants'
 
 import {
   loadInitialData,
@@ -30,7 +31,7 @@ class Main extends Component {
 
   render() {
     return (
-      <View>
+      <SafeAreaView style={styles.container}>
         <Text h1 style={{textAlign:"center"}}>Flashcards</Text>
         {/* <Setting/> */}
         {/* <AddDeck/> */}
@@ -38,17 +39,23 @@ class Main extends Component {
         {/* <QuizStartView/> */}
         {/* <Question/> */}
         {/* <Result/> */}
-        <CardList/>
-      </View>
+        <CardList {...this.props}/>
+      </SafeAreaView>
     )
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: Constants.statusBarHeight,
+  }
+});
 
 
 
 function mapStateToProps(state){
-  return state
+  return { deck: state}
 }
 
 const mapDispatchToProps={

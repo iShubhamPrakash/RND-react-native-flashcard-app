@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { View } from 'react-native'
 import { Text } from 'react-native-elements'
 import {connect} from 'react-redux'
+import Constants from 'expo-constants'
 
 import {
   loadInitialData,
@@ -16,20 +17,6 @@ class Home extends Component {
     console.log("After mount-", this.props);
 
     this.props.dispatch(loadInitialData())
-    // this.props.dispatch(addDeck("test"))
-    // this.props.dispatch(addCardsToDeck("test",{
-    //   question: 'What is test?',
-    //   answer: 'TEst us erfaces. It is maintained by Facebook and a community of individual developers and companies. '
-    // }))
-    // this.props.dispatch(addCardsToDeck("test",{
-    //   question: 'What is test 222?',
-    //   answer: '222 TEst us erfaces. It is maintained by Facebook and a community of individual developers and companies. '
-    // }))
-    // this.props.dispatch(removeDeck('React'))
-    // this.props.dispatch(removeDeck('test'))
-    // this.props.dispatch(removeDeck('test'))
-    // this.props.dispatch(resetData())
-
   }
 
 
@@ -41,8 +28,6 @@ class Home extends Component {
     )
   }
 }
-
-
 
 
 function mapStateToProps(state){
