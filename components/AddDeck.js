@@ -9,6 +9,12 @@ class AddDeck extends Component {
   state={
     inputText: ""
   }
+
+  handleSubmit=(e)=>{
+    this.props.addDeck(this.state.inputText.trim())
+    this.setState({inputText:""})
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -18,11 +24,13 @@ class AddDeck extends Component {
               inputStyle={{color:'gray', padding: 4, textAlign:'center' }}
               placeholder="Enter Deck Name"
               ref='Nameinput'
+              value={this.state.inputText}
               onChangeText={text=>this.setState({inputText:text})}
             />
             <Button
+              disabled={this.state.inputText.trim()===""}
               title=" CREATE"
-              onPress={e=>console.log("clicked",this.state.inputText)}
+              onPress={this.handleSubmit}
               icon={
                 <Icon
                   name="ios-add-circle-outline"
@@ -30,7 +38,7 @@ class AddDeck extends Component {
                   color="white"
                 />
               }
-              linearGradientProps={CS.buttonGradient}
+              linearGradientProps={this.state.inputText.trim()!=="" ? CS.buttonGradient: null }
               buttonStyle={{marginTop: 16}}
             />
             </View>

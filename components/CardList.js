@@ -11,6 +11,7 @@ class CardList extends Component {
 
   componentDidMount(){
     console.log("From card component-", this.props);
+    this.props.loadInitialData()
     this.setState({deck: Object.values(this.props.deck)})
   }
 

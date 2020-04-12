@@ -17,11 +17,11 @@ const appReducer=(state={},action)=>{
 
     case ADD_DECK :
       return {
-        ...state,
         [action.title]:{
           title: action.title,
           cards:[]
-        }
+        },
+        ...state,
       }
 
     case REMOVE_DECK:

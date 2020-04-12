@@ -34,7 +34,7 @@ class Main extends Component {
       <SafeAreaView style={styles.container}>
         <Text h1 style={{textAlign:"center"}}>Flashcards</Text>
         {/* <Setting/> */}
-        {/* <AddDeck/> */}
+        <AddDeck addDeck={this.props.addDeck}/>
         {/* <AddQuestion/> */}
         {/* <QuizStartView/> */}
         {/* <Question/> */}
