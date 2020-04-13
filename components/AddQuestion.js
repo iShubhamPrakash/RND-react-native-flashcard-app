@@ -49,6 +49,7 @@ class AddQuestion extends Component {
 
             <Button
               title=" ADD"
+              disabled={question.trim()==="" || answer.trim()===""}
               onPress={this.handleAddCard}
               icon={
                 <Icon
@@ -57,7 +58,7 @@ class AddQuestion extends Component {
                   color="white"
                 />
               }
-              linearGradientProps={CS.buttonGradient}
+              linearGradientProps={question.trim()==="" || answer.trim()==="" ? null: CS.buttonGradient}
               buttonStyle={{marginTop: 16}}
             />
           </View>
@@ -70,7 +71,7 @@ class AddQuestion extends Component {
 
 const styles= StyleSheet.create({
  container:{
-  padding: 16,
+  flex:1,
   textAlign: 'center',
   justifyContent: 'center',
  }

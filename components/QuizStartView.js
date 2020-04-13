@@ -49,8 +49,8 @@ class QuizStartView extends Component {
     return (
       <View style={styles.container}>
         <Card>
-          <View>
-            <Text h4 style={{textAlign:'center'}}>{deckName}</Text>
+          <View style={{marginTop:32,marginBottom:32}}>
+            <Text h3 style={{textAlign:'center'}}>{deckName}</Text>
             <View style={{flexDirection:'row', justifyContent:'center'}}>
               <Text>Total number of cards: </Text>
               <Badge status="warning" value={totalCards}/>
@@ -117,7 +117,7 @@ class QuizStartView extends Component {
 
 const styles= StyleSheet.create({
  container:{
-  padding: 16,
+  flex:1,
   textAlign: 'center',
   justifyContent: 'center',
  }

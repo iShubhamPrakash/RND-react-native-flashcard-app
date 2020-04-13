@@ -16,9 +16,10 @@ class AddDeck extends Component {
   }
 
   handleSubmit=(e)=>{
-    this.props.addDeck(this.state.inputText.trim())
+    const deckName=this.state.inputText.trim()
+    this.props.addDeck(deckName)
     this.setState({inputText:""})
-    this.props.navigation.navigate('Deck')
+    this.props.navigation.navigate('Add Card',{ deckName })
   }
 
   render() {
@@ -57,7 +58,7 @@ class AddDeck extends Component {
 
 const styles= StyleSheet.create({
  container:{
-  padding: 16,
+  flex:1,
   textAlign: 'center',
   justifyContent: 'center',
  }

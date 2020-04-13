@@ -87,9 +87,9 @@ class Setting extends Component {
 
 const styles= StyleSheet.create({
  container:{
-  padding: 16,
+  flex:1,
   textAlign: 'center',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
  }
 })
 const mapDispatchToProps={

@@ -11,7 +11,7 @@ const DeckStack = createStackNavigator()
 
 const DeckStacksScreens=()=>{
   return (
-    <DeckStack.Navigator>
+    <DeckStack.Navigator initialRouteName="Flash Cards">
       <DeckStack.Screen name='Flash Cards' component={CardList}/>
       <DeckStack.Screen name='Start Quiz' component={QuizStartView}/>
       <DeckStack.Screen name='Add Card' component={AddQuestion}/>
