@@ -34,13 +34,12 @@ class Question extends Component {
 
     const total= cards.length
     const correctPercent= ((correct/total)*100).toPrecision(2)
-    this.props.navigation.push('Result',{result: {correct, incorrect, total,correctPercent,deckName}})
+    this.props.navigation.push('Result',{result: {correct, incorrect,cards, total,correctPercent,deckName}})
   }
 
   render() {
     const {isAnswerVisible,deckName,cards,curresntQuestionIndex}= this.state
     const totalQuestion=cards.length
-    console.log("Question State:", this.state)
 
     if(deckName===""){
       return <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
@@ -69,7 +68,7 @@ class Question extends Component {
           </View>
           <Card title="Question">
             <View>
-    <Text style={{textAlign:'left', fontSize:20}}>{cards[curresntQuestionIndex].question}</Text>
+              <Text style={{textAlign:'left', fontSize:20}}>{cards[curresntQuestionIndex].question}</Text>
             </View>
           </Card>
           {

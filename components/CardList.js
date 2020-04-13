@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { View, FlatList } from 'react-native'
 import { ListItem,Text } from 'react-native-elements'
-import TouchableScale from 'react-native-touchable-scale'; // https://github.com/kohver/react-native-touchable-scale
+import TouchableScale from 'react-native-touchable-scale'
 import {
   loadInitialData,
 } from '../actions'
@@ -13,14 +13,14 @@ class CardList extends Component {
     return (
       <View>
         <FlatList
+          keyExtractor={(item, index) => item.title+index}
           data={Object.values(this.props.deck)}
           renderItem={({item})=>(
             <ListItem
-              key={item.title}
               style={{margin: 16, marginBottom:8 }}
               Component={TouchableScale}
               friction={90}
-              tension={100} // These props are passed to the parent component (here TouchableScale)
+              tension={100}
               activeScale={0.95}
               linearGradientProps={{
                 colors: ['#FF9800', '#F44336'],
@@ -42,6 +42,7 @@ class CardList extends Component {
     )
   }
 }
+
 function mapStateToProps(state){
   return { deck: state}
 }

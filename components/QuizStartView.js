@@ -12,39 +12,24 @@ import {
   removeDeck,
 } from '../actions'
 class QuizStartView extends Component {
-  state={
-    deckName:'',
-    cards:[],
-    totalCards:0,
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const {deckName}= nextProps.route.params.deck
-    const cards= nextProps.deck[deckName].cards
-
-    if (deckName !== prevState.deckName || cards !== prevState.cards) {
-      return ({deckName, cards, totalCards: cards.length })
-    }
-  }
 
   handleRemoveDeck=(e)=>{
+    const {deckName} = this.props
     Alert.alert(
       'Are you sure?',
       'This will remove this deck!',
       [
         {text: 'NO', onPress: () => console.log("Cancel Delete deck"), style: 'cancel'},
         {text: 'YES', onPress: () => {
-          this.props.removeDeck(this.state.deckName)
-          this.props.navigation.goBack()
+          this.props.removeDeck(deckName)
+          this.props.navigation.push('Flash Cards')
         }},
       ]
     )
   }
 
   render() {
-    const {deckName,totalCards,cards}= this.state
-
-    console.log("render",totalCards);
+    const {deckName,totalCards,cards}= this.props
 
     return (
       <View style={styles.container}>
@@ -123,8 +108,17 @@ const styles= StyleSheet.create({
  }
 })
 
-function mapStateToProps(state){
-  return { deck: state}
+function mapStateToProps(state,props){
+ try{
+  const {deckName}= props.route.params.deck
+  const cards=state[deckName].cards
+  return { cards,deckName,totalCards:cards.length}
+}catch (e){
+  return {
+    cards:[],
+    deckName:"",
+    totalCards:0}
+ }
 }
 
 const mapDispatchToProps={

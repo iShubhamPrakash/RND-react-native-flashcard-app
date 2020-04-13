@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { View, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { Button,Text,Card, Input } from 'react-native-elements'
+import { Button,Card, Input } from 'react-native-elements'
 import CS from '../coreStyles'
 
 import {

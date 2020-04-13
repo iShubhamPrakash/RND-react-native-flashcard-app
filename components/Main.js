@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
-import { View,StyleSheet,SafeAreaView } from 'react-native'
-import { Text } from 'react-native-elements'
+import {StyleSheet,SafeAreaView } from 'react-native'
 import {connect} from 'react-redux'
 import Constants from 'expo-constants'
 import { Ionicons } from '@expo/vector-icons'
 
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 
@@ -22,36 +20,19 @@ import {
 
 import Setting from './Setting'
 import AddDeck from './AddDeck'
-import AddQuestion from './AddQuestion'
-import QuizStartView from './QuizStartView'
-import Question from './Question'
-import Result from './Result'
-import CardList from './CardList'
 import DeckStackScreens from './DeckStackScreens'
 
 
 class Main extends Component {
 
   componentDidMount(){
-    console.log("After mount-", this.props);
-
     this.props.loadInitialData()
-
   }
 
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        {/* <Text h1 style={{textAlign:"center"}}>Flashcards</Text> */}
-        {/* <Setting resetData={this.props.resetData}/> */}
-        {/* <AddDeck addDeck={this.props.addDeck}/> */}
-        {/* <AddQuestion/> */}
-        {/* <QuizStartView/> */}
-        {/* <Question/> */}
-        {/* <Result/> */}
-        {/* <CardList {...this.props}/> */}
-
         <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
@@ -90,7 +71,7 @@ class Main extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Constants.statusBarHeight,
+    // marginTop: Constants.statusBarHeight,
   }
 });
 
