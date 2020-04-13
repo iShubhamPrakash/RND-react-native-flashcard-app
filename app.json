@@ -22,7 +22,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "org.flashcards.exp"
+    },
+    "android": {
+      "package": "org.flashcards.exp"
+     },
+    "sdkVersion": "37.0.0",
+    "description": "Learn stuff by creating decks and playing quiz",
+    "githubUrl": "https://github.com/i-shubhamprakash/RND-react-native-flashcard-app"
   }
 }
