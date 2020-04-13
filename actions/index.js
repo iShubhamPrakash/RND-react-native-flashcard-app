@@ -24,11 +24,10 @@ export const addDeck=(newTitle)=>{
  }
 }
 
-export const removeDeck=(id,index)=>{
+export const removeDeck=(id)=>{
   return{
     type:REMOVE_DECK,
     id,
-    index
   }
 }
 

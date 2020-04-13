@@ -1,22 +1,55 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import {connect} from 'react-redux'
+import { View, StyleSheet,Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon1 from 'react-native-vector-icons/SimpleLineIcons'
 import Icon2 from 'react-native-vector-icons/AntDesign'
 import { Button,Text,Card, Badge } from 'react-native-elements'
 
 import CS from '../coreStyles'
-
+import {
+  addCardsToDeck,
+  removeDeck,
+} from '../actions'
 class QuizStartView extends Component {
+  state={
+    deckName:'',
+    cards:[],
+    totalCards:0,
+  }
+
+  componentDidMount(){
+    const {deckName,cards}= this.props.route.params.deck
+    console.log("QuizStart Component did mount", this.props)
+    this.setState({deckName,cards,totalCards:cards.length})
+  }
+
+  handleRemoveDeck=(e)=>{
+    Alert.alert(
+      'Are you sure?',
+      'This will remove this deck!',
+      [
+        {text: 'NO', onPress: () => console.log("Cancel Delete deck"), style: 'cancel'},
+        {text: 'YES', onPress: () => {
+          this.props.removeDeck(this.state.deckName)
+          this.props.navigation.goBack()
+        }},
+      ]
+    )
+  }
+
   render() {
+    const {deckName,totalCards}= this.state
+
+
     return (
       <View style={styles.container}>
         <Card>
           <View>
-            <Text h4 style={{textAlign:'center'}}>Card Title</Text>
+    <Text h4 style={{textAlign:'center'}}>{deckName}</Text>
             <View style={{flexDirection:'row', justifyContent:'center'}}>
               <Text>Total number of cards: </Text>
-              <Badge status="warning" value="5"/>
+              <Badge status="warning" value={totalCards}/>
             </View>
 
           </View>
@@ -55,7 +88,7 @@ class QuizStartView extends Component {
             />
             <Button
               title=" DELETE DECK"
-              onPress={e=>console.log("clicked")}
+              onPress={this.handleRemoveDeck}
               icon={
                 <Icon2
                   name="delete"
@@ -86,4 +119,8 @@ const styles= StyleSheet.create({
  }
 })
 
-export default  QuizStartView
+const mapDispatchToProps={
+  addCardsToDeck,
+  removeDeck,
+}
+export default  connect(null,mapDispatchToProps)(QuizStartView)

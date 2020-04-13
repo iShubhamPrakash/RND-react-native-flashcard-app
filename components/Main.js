@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-const Stack = createStackNavigator()
+
 const Tab = createBottomTabNavigator()
 
 import {
@@ -27,15 +27,7 @@ import QuizStartView from './QuizStartView'
 import Question from './Question'
 import Result from './Result'
 import CardList from './CardList'
-
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
+import DeckStackScreens from './DeckStackScreens'
 
 
 class Main extends Component {
@@ -85,7 +77,7 @@ class Main extends Component {
             inactiveTintColor: 'gray',
           }}
         >
-          <Tab.Screen name="Deck" component={CardList} />
+          <Tab.Screen name="Deck" component={DeckStackScreens} />
           <Tab.Screen name="Add" component={AddDeck} />
           <Tab.Screen name="Settings" component={Setting} />
         </Tab.Navigator>

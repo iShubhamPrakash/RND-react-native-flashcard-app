@@ -3,16 +3,15 @@ import {connect} from 'react-redux'
 import { View, FlatList } from 'react-native'
 import { ListItem,Text } from 'react-native-elements'
 import TouchableScale from 'react-native-touchable-scale'; // https://github.com/kohver/react-native-touchable-scale
-
 import {
   loadInitialData,
 } from '../actions'
+
 class CardList extends Component {
 
   render() {
     return (
       <View>
-        <Text h4 style={{textAlign:'center'}}>Flash Cards</Text>
         <FlatList
           data={Object.values(this.props.deck)}
           renderItem={({item})=>(
@@ -34,6 +33,7 @@ class CardList extends Component {
               subtitleStyle={{ color: 'white' }}
               subtitle={item.cards.length + " cards"}
               chevron={{ color: 'white' }}
+              onPress={e=>this.props.navigation.push('Start Quiz',{ deck:{deckName: item.title, cards: item.cards} })}
             />
           )}
           contentContainerStyle={{ paddingBottom: 55}}
