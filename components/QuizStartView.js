@@ -18,10 +18,13 @@ class QuizStartView extends Component {
     totalCards:0,
   }
 
-  componentDidMount(){
-    const {deckName,cards}= this.props.route.params.deck
-    console.log("QuizStart Component did mount", this.props)
-    this.setState({deckName,cards,totalCards:cards.length})
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {deckName}= nextProps.route.params.deck
+    const cards= nextProps.deck[deckName].cards
+
+    if (deckName !== prevState.deckName || cards !== prevState.cards) {
+      return ({deckName, cards, totalCards: cards.length })
+    }
   }
 
   handleRemoveDeck=(e)=>{
@@ -41,19 +44,20 @@ class QuizStartView extends Component {
   render() {
     const {deckName,totalCards}= this.state
 
+    console.log("render",totalCards);
 
     return (
       <View style={styles.container}>
         <Card>
           <View>
-    <Text h4 style={{textAlign:'center'}}>{deckName}</Text>
+            <Text h4 style={{textAlign:'center'}}>{deckName}</Text>
             <View style={{flexDirection:'row', justifyContent:'center'}}>
               <Text>Total number of cards: </Text>
               <Badge status="warning" value={totalCards}/>
             </View>
-
           </View>
         </Card>
+
         <View style={{padding: 15}}>
           <Button
             title=" START QUIZ"
@@ -71,7 +75,7 @@ class QuizStartView extends Component {
           <View style={{flexDirection:'row', justifyContent:'space-between'}}>
             <Button
               title=" ADD CARDS"
-              onPress={e=>console.log("clicked")}
+              onPress={e=>this.props.navigation.push('Add Card',{ deckName })}
               icon={
                 <Icon
                   name="ios-add-circle-outline"
@@ -119,8 +123,12 @@ const styles= StyleSheet.create({
  }
 })
 
+function mapStateToProps(state){
+  return { deck: state}
+}
+
 const mapDispatchToProps={
   addCardsToDeck,
   removeDeck,
 }
-export default  connect(null,mapDispatchToProps)(QuizStartView)
+export default  connect(mapStateToProps,mapDispatchToProps)(QuizStartView)

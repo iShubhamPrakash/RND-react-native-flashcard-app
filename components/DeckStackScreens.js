@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack'
 
 import CardList from './CardList'
 import QuizStartView from './QuizStartView'
+import AddQuestion from './AddQuestion'
 
 
 
@@ -13,6 +14,7 @@ const DeckStacksScreens=()=>{
     <DeckStack.Navigator>
       <DeckStack.Screen name='Flash Cards' component={CardList}/>
       <DeckStack.Screen name='Start Quiz' component={QuizStartView}/>
+      <DeckStack.Screen name='Add Card' component={AddQuestion}/>
     </DeckStack.Navigator>
   )
 }
