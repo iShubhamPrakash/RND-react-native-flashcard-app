@@ -4,6 +4,7 @@ import { View,ScrollView, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
 import {AntDesign} from 'react-native-vector-icons'
 import { Button,Text,Card, Badge } from 'react-native-elements'
+import { setLocalNotification, clearLocalNotification } from '../utils/helpers'
 
 import CS from '../coreStyles'
 
@@ -20,6 +21,7 @@ class Question extends Component {
   componentDidMount(){
     const {deckName,cards}= this.props.route.params
     this.setState({deckName,cards})
+    clearLocalNotification().then(setLocalNotification)
   }
 
   handleAnswerClick=(ans)=>{
