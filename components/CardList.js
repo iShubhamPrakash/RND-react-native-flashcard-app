@@ -1,26 +1,20 @@
 import React, { Component } from 'react'
-import { View,Text, FlatList } from 'react-native'
-import { ListItem } from 'react-native-elements'
+import {connect} from 'react-redux'
+import { View, FlatList } from 'react-native'
+import { ListItem,Text } from 'react-native-elements'
 import TouchableScale from 'react-native-touchable-scale'; // https://github.com/kohver/react-native-touchable-scale
 
-
+import {
+  loadInitialData,
+} from '../actions'
 class CardList extends Component {
-  state={
-    deck:[]
-  }
-
-  componentDidMount(){
-    console.log("From card component-", this.props);
-    this.props.loadInitialData()
-    this.setState({deck: Object.values(this.props.deck)})
-  }
 
   render() {
-
     return (
       <View>
+        <Text h4 style={{textAlign:'center'}}>Flash Cards</Text>
         <FlatList
-          data={this.state.deck}
+          data={Object.values(this.props.deck)}
           renderItem={({item})=>(
             <ListItem
               key={item.title}
@@ -42,10 +36,18 @@ class CardList extends Component {
               chevron={{ color: 'white' }}
             />
           )}
+          contentContainerStyle={{ paddingBottom: 55}}
         />
       </View>
     )
   }
 }
+function mapStateToProps(state){
+  return { deck: state}
+}
 
-export default CardList
+const mapDispatchToProps={
+  loadInitialData,
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CardList)

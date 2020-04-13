@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import { View, StyleSheet,Linking,Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 import { Button,Text,Card,SocialIcon,Avatar } from 'react-native-elements'
 import CS from '../coreStyles'
+
+import {
+  resetData,
+} from '../actions'
 
 class Setting extends Component {
 
@@ -12,7 +17,10 @@ class Setting extends Component {
       'This will remove all of your decks and reset the app!',
       [
         {text: 'NO', onPress: () => console.log("Cancel reset"), style: 'cancel'},
-        {text: 'YES', onPress: () => this.props.resetData()},
+        {text: 'YES', onPress: () => {
+          this.props.resetData()
+          this.props.navigation.navigate('Deck')
+        }},
       ]
     )
   }
@@ -84,5 +92,8 @@ const styles= StyleSheet.create({
   justifyContent: 'space-between',
  }
 })
+const mapDispatchToProps={
+  resetData,
+}
 
-export default  Setting
+export default  connect(null,mapDispatchToProps)(Setting)

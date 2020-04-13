@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import { View, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Button,Text,Card, Input } from 'react-native-elements'
 import CS from '../coreStyles'
+
+import {
+  addDeck,
+} from '../actions'
 
 class AddDeck extends Component {
 
@@ -13,6 +18,7 @@ class AddDeck extends Component {
   handleSubmit=(e)=>{
     this.props.addDeck(this.state.inputText.trim())
     this.setState({inputText:""})
+    this.props.navigation.navigate('Deck')
   }
 
   render() {
@@ -57,4 +63,9 @@ const styles= StyleSheet.create({
  }
 })
 
-export default  AddDeck
+const mapDispatchToProps={
+  addDeck,
+}
+
+
+export default  connect(null,mapDispatchToProps)(AddDeck)

@@ -3,6 +3,14 @@ import { View,StyleSheet,SafeAreaView } from 'react-native'
 import { Text } from 'react-native-elements'
 import {connect} from 'react-redux'
 import Constants from 'expo-constants'
+import { Ionicons } from '@expo/vector-icons'
+
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
+const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator()
 
 import {
   loadInitialData,
@@ -19,6 +27,17 @@ import QuizStartView from './QuizStartView'
 import Question from './Question'
 import Result from './Result'
 import CardList from './CardList'
+
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
+    </View>
+  );
+}
+
+
 class Main extends Component {
 
   componentDidMount(){
@@ -32,14 +51,45 @@ class Main extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Text h1 style={{textAlign:"center"}}>Flashcards</Text>
-        <Setting resetData={this.props.resetData}/>
-        <AddDeck addDeck={this.props.addDeck}/>
+        {/* <Text h1 style={{textAlign:"center"}}>Flashcards</Text> */}
+        {/* <Setting resetData={this.props.resetData}/> */}
+        {/* <AddDeck addDeck={this.props.addDeck}/> */}
         {/* <AddQuestion/> */}
         {/* <QuizStartView/> */}
         {/* <Question/> */}
         {/* <Result/> */}
-        <CardList {...this.props}/>
+        {/* <CardList {...this.props}/> */}
+
+        <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              if (route.name === 'Deck') {
+                iconName = focused
+                  ? 'ios-apps'
+                  : 'ios-apps';
+              } else if (route.name === 'Settings') {
+                iconName = focused ? 'ios-list-box' : 'ios-list';
+              }else if(route.name === 'Add'){
+                iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
+              }
+
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: 'tomato',
+            inactiveTintColor: 'gray',
+          }}
+        >
+          <Tab.Screen name="Deck" component={CardList} />
+          <Tab.Screen name="Add" component={AddDeck} />
+          <Tab.Screen name="Settings" component={Setting} />
+        </Tab.Navigator>
+        </NavigationContainer>
       </SafeAreaView>
     )
   }
