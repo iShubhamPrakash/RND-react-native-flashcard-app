@@ -22,8 +22,9 @@ class Result extends Component {
             <Badge status="error" value={incorrect}/>
           </View>
           <View>
+            <View style={{flexDirection:'row', justifyContent:'space-around'}}>
             <Button
-              title=" Restart"
+              title=" Restart "
               onPress={e=>this.props.navigation.push('Quiz',{deckName,cards})}
               icon={
                 <Icon
@@ -32,13 +33,16 @@ class Result extends Component {
                 color="white"
                 />
               }
-              linearGradientProps={CS.buttonGradient}
+              linearGradientProps={{
+                colors: ['darkgreen', 'green'],
+                start: { x: 0, y: 0.5 },
+                end: { x: 1, y: 0.5 },
+              }}
               buttonStyle={{marginTop: 16}}
-              />
-            <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-              <Button
+            />
+              {/* <Button
                 title=" Back  "
-                onPress={e=>console.log("clicked")}
+                onPress={e=>this.props.navigation.goBack()}
                 icon={
                   <Icon
                   name="back"
@@ -52,9 +56,9 @@ class Result extends Component {
                   start: { x: 0, y: 0.5 },
                   end: { x: 1, y: 0.5 },
                 }}
-                />
+                /> */}
               <Button
-                title=" Home"
+                title=" Home "
                 onPress={e=> this.props.navigation.push('Flash Cards')}
                 icon={
                   <Icon
@@ -63,13 +67,9 @@ class Result extends Component {
                   color="white"
                   />
                 }
-                linearGradientProps={{
-                  colors: ['darkgreen', 'green'],
-                  start: { x: 0, y: 0.5 },
-                  end: { x: 1, y: 0.5 },
-                }}
+                linearGradientProps={CS.buttonGradient}
                 buttonStyle={{marginTop: 16}}
-                />
+              />
             </View>
           </View>
         </Card>

@@ -1,6 +1,5 @@
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
-import {View, Text} from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import CardList from './CardList'
 import QuizStartView from './QuizStartView'

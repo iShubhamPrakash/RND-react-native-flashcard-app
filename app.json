@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "Flash Cards",
     "slug": "flashcards",
     "platforms": [
       "ios",
