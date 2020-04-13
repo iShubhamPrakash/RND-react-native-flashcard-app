@@ -42,7 +42,7 @@ class QuizStartView extends Component {
   }
 
   render() {
-    const {deckName,totalCards}= this.state
+    const {deckName,totalCards,cards}= this.state
 
     console.log("render",totalCards);
 
@@ -61,7 +61,7 @@ class QuizStartView extends Component {
         <View style={{padding: 15}}>
           <Button
             title=" START QUIZ"
-            onPress={e=>console.log("clicked")}
+            onPress={e=>this.props.navigation.push('Quiz',{deckName,cards})}
             icon={
               <Icon1
               name="control-play"

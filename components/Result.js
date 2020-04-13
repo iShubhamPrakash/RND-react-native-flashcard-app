@@ -7,20 +7,25 @@ import CS from '../coreStyles'
 
 class Result extends Component {
   render() {
+    const {correct, incorrect, total,correctPercent,deckName} = this.props.route.params.result
+    console.log("Result props", this.props);
+
     return (
       <View style={styles.container}>
         <Card title="Thanks for playing">
           <View style={{justifyContent:'center', alignItems:'center'}}>
-            <Text h3>100% Result</Text>
+            <Text h3>{correctPercent}% Result</Text>
           </View>
           <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-            <Badge status="warning" value="5/5"/>
-            <Text>  Correct</Text>
+            <Text>Correct: </Text>
+            <Badge status="warning" value={correct}/>
+            <Text>    Incorrect: </Text>
+            <Badge status="error" value={incorrect}/>
           </View>
           <View>
             <Button
               title=" Restart"
-              onPress={e=>console.log("clicked")}
+              onPress={e=>this.props.navigation.push('Quiz',{deckName})}
               icon={
                 <Icon
                 name="reload1"
@@ -51,7 +56,7 @@ class Result extends Component {
                 />
               <Button
                 title=" Home"
-                onPress={e=>console.log("clicked")}
+                onPress={e=> this.props.navigation.push('Flash Cards')}
                 icon={
                   <Icon
                   name="home"
