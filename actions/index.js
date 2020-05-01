@@ -1,3 +1,7 @@
+// import AsyncStorage from '@react-native-community/async-storage'
+import { AsyncStorage } from 'react-native'
+import {STORAGE_KEY} from '../utils/constants'
+
 import deck from '../utils/_DB'
 
 export const INITIAL_DATA='INITIAL_DATA'
@@ -10,10 +14,36 @@ export const REMOVE_CARD='REMOVE_CARD'
 
 export const RESET_DATA='RESET_DATA'
 
-export const loadInitialData=()=>{
+
+const getData = async () => {
+  try {
+    let value = await AsyncStorage.getItem(STORAGE_KEY)
+    // console.log("Asnc val=",value);
+
+    if(value !== null) {
+      // value previously stored
+      value = await JSON.parse(value)
+      return value
+    }else{
+      return deck
+    }
+  } catch(e) {
+    // error reading value
+    return deck
+  }
+}
+
+
+export const loadInitialData= ()=> async dispatch =>{
+  const data= await getData()
+  return dispatch(loadData(data))
+}
+
+
+const loadData= data=>{
   return {
     type: INITIAL_DATA,
-    data: deck
+    data: data
   }
 }
 

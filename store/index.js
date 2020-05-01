@@ -1,4 +1,5 @@
 import {createStore, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
 
 import appReducer from '../reducers'
 
@@ -12,4 +13,4 @@ const logger=(state)=>(next)=>(action)=>{
   return returnedValue
 }
 
-export default store = createStore(appReducer,applyMiddleware(logger))
+export default store = createStore(appReducer,applyMiddleware(thunk,logger))

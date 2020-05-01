@@ -7,7 +7,6 @@ import { Ionicons } from '@expo/vector-icons'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-
 const Tab = createBottomTabNavigator()
 
 import {
@@ -23,12 +22,12 @@ import AddDeck from './AddDeck'
 import DeckStackScreens from './DeckStackScreens'
 
 
+
 class Main extends Component {
 
   componentDidMount(){
     this.props.loadInitialData()
   }
-
 
   render() {
     return (
